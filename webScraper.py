@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup, Comment
 
 # URL to scrape
-url = 'https://www.example.com/'
+url = input("Enter URL:")
 
 # Send a GET request
 response = requests.get(url)
