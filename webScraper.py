@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup, Comment
 
 # URL to scrape
-url = 'https://example.com'
+url = 'https://www.example.com/'
 
 # Send a GET request
 response = requests.get(url)
@@ -40,7 +40,12 @@ if response.status_code == 200:
     paragraphs = soup.find_all('p')
     for paragraph in paragraphs:
         article_content += paragraph.get_text() + '\n'
+        
+    links = soup.find_all('link')
+    link_content = ''
+    for link in links:
+        link_content += f'href: {link.get("href")}, rel: {link.get("rel")}\n'
     
     print(f'Article Content: {article_content}')
 else:
-    print(f'Failed to retrieve the page. Status code: {response.status_code}')
+    print(f'Failed. Status code: {response.status_code}')
