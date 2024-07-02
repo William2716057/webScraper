@@ -44,8 +44,9 @@ if response.status_code == 200:
     links = soup.find_all('link')
     link_content = ''
     for link in links:
-        link_content += f'href: {link.get("href")}, rel: {link.get("rel")}\n'
+        link_content += f'href: {link.get("href")}, rel: {link.get("rel")}, https: {link.get("https")}\n'
     
     print(f'Article Content: {article_content}')
+    print(f'Link Content: {link_content}')
 else:
     print(f'Failed. Status code: {response.status_code}')
